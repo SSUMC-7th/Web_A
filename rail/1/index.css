@@ -1,0 +1,59 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+hr {
+  width: 84%;
+  border-color: rgb(0, 0, 0, 0.1);
+  border-width: 0.02rem;
+}
+
+#textfield {
+  margin-top: 0.5rem;
+  width: 64%;
+  padding: 0.75rem;
+  padding-left: 1rem;
+  border-width: 0.1rem;
+  border-radius: 0.25rem;
+}
+#textfield:focus,
+#textfield:hover {
+  outline-color: blue;
+  border-radius: 0.25rem;
+}
+#textfield::placeholder {
+  font-style: oblique;
+  color: #cedbee;
+  font-weight: 600;
+}
+
+#work-zone {
+  width: 64%;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
+}
+
+#assignments,
+#completions {
+  width: 12rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 700;
+}
+
+.subStyle {
+  text-decoration: underline;
+  text-decoration-thickness: 0.15rem;
+  text-underline-offset: 0.3rem;
+  text-decoration-color: #cedbee;
+}
