@@ -1,0 +1,8 @@
+.content {
+  margin-left: 200px; /* sidebar 너비만큼 왼쪽 공간 확보 */
+  margin-top: 60px; /* navbar 높이만큼 위쪽 공간 확보 */
+  padding: 20px;
+  background-color: #1a1a1a;
+  min-height: 100vh;
+  color: white;
+}
