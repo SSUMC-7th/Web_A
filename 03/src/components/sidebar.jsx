@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaSearch, FaFilm } from "react-icons/fa"; // react-icons import
+import { FaSearch, FaFilm } from "react-icons/fa"; 
 import styled from "styled-components";
 
 const Sidebar = () => {
@@ -18,7 +18,6 @@ const Sidebar = () => {
 
 export default Sidebar;
 
-// 스타일 정의
 const SideNav = styled.nav`
     display: flex;
     flex-direction: column;

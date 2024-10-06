@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-// 이미지 import (올바른 경로 확인)
 import Movie1 from '../../assets/movie1.jpg';
 import Movie2 from '../../assets/movie2.jpg';
 import Movie3 from '../../assets/movie3.jpg';
@@ -52,8 +51,8 @@ const Title = styled.h1`
 
 const MovieGrid = styled.div`
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4개의 카드를 가로로 배치 */
-    gap: 20px; /* 카드 사이 간격 */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
     padding: 10px 0;
 `;
 
@@ -64,14 +63,14 @@ const MovieCard = styled.div`
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
     &:hover {
-        transform: scale(1.05); /* hover 시 확대 효과 */
+        transform: scale(1.05);
     }
 `;
 
 const MovieImage = styled.img`
     width: 100%;
-    height: 180px; /* 고정된 높이 */
-    object-fit: cover; /* 이미지를 비율에 맞춰 자르기 */
+    height: 180px;
+    object-fit: cover;
     border-radius: 8px;
     display: block;
 `;
@@ -80,10 +79,10 @@ const Label = styled.div`
     position: absolute;
     bottom: 10px;
     left: 10px;
-    background-color: rgba(0, 0, 0, 0.7); /* 반투명한 배경 */
+    background-color: rgba(0, 0, 0, 0.7);
     color: white;
     padding: 5px 10px;
     font-size: 14px;
     font-weight: bold;
-    border-radius: 5px; /* 살짝 둥근 모서리 */
+    border-radius: 5px;
 `;

@@ -5,10 +5,10 @@ import styled from 'styled-components';
 const Navbar = () => {
   return (
     <NavContainer>
-      <Logo to="/">YONGCHA</Logo> {/* 로고 클릭 시 '/'로 이동 */}
+      <Logo to="/">YONGCHA</Logo>
       <ButtonContainer>
-        <StyledLink to="/login">로그인</StyledLink> {/* 로그인 버튼 클릭 시 /login으로 이동 */}
-        <StyledLink to="/signup">회원가입</StyledLink> {/* 회원가입 버튼 클릭 시 /signup으로 이동 */}
+        <StyledLink to="/login">로그인</StyledLink>
+        <StyledLink to="/signup">회원가입</StyledLink>
       </ButtonContainer>
     </NavContainer>
   );
