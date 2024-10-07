@@ -16,19 +16,27 @@ const MoviesPage = () => {
             <MovieGrid>
                 <MovieCard onClick={() => navigate('/movies/now-playing')}>
                     <MovieImage src={Movie1} alt="현재 상영중인 영화" />
-                    <Label>현재 상영중인</Label>
+                    <Overlay>
+                        <Text>현재 상영중인</Text>
+                    </Overlay>
                 </MovieCard>
                 <MovieCard onClick={() => navigate('/movies/popular')}>
                     <MovieImage src={Movie2} alt="인기있는 영화" />
-                    <Label>인기있는</Label>
+                    <Overlay>
+                        <Text>인기있는</Text>
+                    </Overlay>
                 </MovieCard>
                 <MovieCard onClick={() => navigate('/movies/top-rated')}>
                     <MovieImage src={Movie3} alt="높은 평가를 받은 영화" />
-                    <Label>높은 평가를 받은</Label>
+                    <Overlay>
+                        <Text>높은 평가를 받은</Text>
+                    </Overlay>
                 </MovieCard>
-                <MovieCard onClick={() => navigate('/movies/up-coming')}>
+                <MovieCard onClick={() => navigate('/movies/upcoming')}>
                     <MovieImage src={Movie4} alt="개봉 예정중인 영화" />
-                    <Label>개봉 예정중인</Label>
+                    <Overlay>
+                        <Text>개봉 예정중인</Text>
+                    </Overlay>
                 </MovieCard>
             </MovieGrid>
         </Container>
@@ -63,7 +71,7 @@ const MovieCard = styled.div`
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
     &:hover {
-        transform: scale(1.05);
+        transform: scale(1.05); 
     }
 `;
 
@@ -72,17 +80,30 @@ const MovieImage = styled.img`
     height: 180px;
     object-fit: cover;
     border-radius: 8px;
-    display: block;
 `;
 
-const Label = styled.div`
+const Overlay = styled.div`
     position: absolute;
-    bottom: 10px;
-    left: 10px;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 5px 10px;
-    font-size: 14px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 8px;
+
+    &:hover {
+        opacity: 1;
+    }
+`;
+
+const Text = styled.p`
+    font-size: 18px;
     font-weight: bold;
-    border-radius: 5px;
+    color: white;
+    text-align: center;
 `;

@@ -1,7 +1,7 @@
-import { Outlet } from "react-router-dom";
-import Navbar from "../components/navbar";
-import Sidebar from "../components/sidebar";
-import styled from "styled-components";
+import { Outlet } from 'react-router-dom';
+import Navbar from '../components/navbar.jsx';
+import Sidebar from '../components/sidebar.jsx';
+import styled from 'styled-components';
 
 const RootLayout = () => {
     return (
@@ -38,7 +38,7 @@ const StyledNavbar = styled(Navbar)`
     background-color: #111;
     color: white;
     padding: 10px;
-    height: 50px; 
+    height: 50px;
     width: 100%;
 `;
 
@@ -48,7 +48,7 @@ const StyledSidebar = styled(Sidebar)`
     color: white;
     padding: 20px;
     height: calc(100vh - 50px);
-    position: fixed; 
+    position: fixed;
     top: 50px;
     left: 0;
     box-sizing: border-box;

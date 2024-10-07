@@ -7,9 +7,8 @@ const TopRatedPage = () => {
 
     useEffect(() => {
         const fetchMovies = async () => {
-            const response = await axios.get(
-                `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_API_KEY}&language=ko-KR`
-            );
+            const apiKey = import.meta.env.VITE_API_KEY;
+            const response = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=ko-KR`);
             setMovies(response.data.results);
         };
 
