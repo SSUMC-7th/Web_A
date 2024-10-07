@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import CategoryCard from "../../component/category-card";
+import { Title } from "../../../common/style/title";
 
 export default function CategoryPage() {
   return (
@@ -30,11 +31,6 @@ export default function CategoryPage() {
     </>
   );
 }
-
-const Title = styled.h2`
-  color: white;
-  margin: 0;
-`;
 
 const CategoryList = styled.div`
   display: flex;
