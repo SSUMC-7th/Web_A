@@ -4,12 +4,17 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const NavBarContainer = styled.div`
+  width: 100%;
+  height: 60px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background-color: #1a1a1a; /* Dark background */
+  background-color: #1a1a1a;
   padding: 10px 20px;
-  color: #fff; /* Text color */
+  color: #fff;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
 `;
 
 const LeftNav = styled.div`
@@ -38,7 +43,8 @@ const StyledLink = styled(Link)`
 
 const ContentWrapper = styled.div`
   display: flex;
-  padding: 20px;
+  flex-direction: row;
+  //padding-top: -500px; /* Adjust for fixed navbar */
 `;
 
 const Sidebar = styled.div`
@@ -49,16 +55,24 @@ const Sidebar = styled.div`
   color: white;
   width: 250px;
   height: 100vh;
+  position: fixed; /* Fix the sidebar as well */
+  top: 60px; /* Adjust for the height of the navbar */
+  left: 0;
 `;
 
 const MainContent = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  /* flex-wrap: wrap; */
+  grid-template-columns: repeat(9, 1fr); /* 한 줄에 9개 요소 */
+  //grid-template-columns: repeat(auto-fill, minmax(150px, 3fr));
   gap: 20px;
-  padding: 20px;
+  padding: 1200px;
   background-color: #000;
-  color: white;
-  flex-grow: 1;
+  color: white; /* Sidebar와 맞추기 위해 여백 설정 */
+  min-height: 100vh; /* 콘텐츠가 화면 전체를 채우도록 */
+  width: calc(100% - 250px); /* Sidebar를 제외한 나머지 공간 채우기 */
+  box-sizing: border-box;
+  margin-top: -1000px;
 `;
 
 function NavBar() {

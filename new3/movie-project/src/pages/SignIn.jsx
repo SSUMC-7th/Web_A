@@ -1,7 +1,7 @@
 function Login() {
   return (
     <div>
-      <h4>로그인 페이지</h4>
+      <h4>회원가입페이지입니다요(@@)</h4>
     </div>
   );
 }

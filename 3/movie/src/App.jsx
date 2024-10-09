@@ -1,8 +1,8 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/home";
-import Movies from "./pages/movies";
-import Login from "./pages/login";
+import Home from "./pages/Home";
+import Movies from "./pages/Movies";
+import Login from "./pages/Login";
 import SignUp from "./pages/signup";
 import Search from "./pages/search";
 import NavBar from "./components/NavBar";
@@ -14,7 +14,6 @@ const router = createBrowserRouter([
     element: <NavBar />,
     children: [
       {
-        // index: true는 위의 path: '/' 즉, 홈 경로를 의미
         index: true,
         element: <Home />,
       },
