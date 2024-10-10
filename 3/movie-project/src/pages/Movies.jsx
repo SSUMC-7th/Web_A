@@ -11,7 +11,7 @@ const StyledCardList = styled.div`
   gap: 1rem;
 `
 const StyledCard = styled.div`
-  width: 140px;
+  width: 120px;
   height: auto;
   cursor: pointer;
   img {

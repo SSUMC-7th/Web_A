@@ -12,7 +12,7 @@ const StyledNav = styled.div`
   padding: 1.5rem;
 `
 
-const RightNav = styled.div` 
+const RightNav = styled.div`
   display: flex;
   flex-grow: 1;
   justify-content: flex-end; 

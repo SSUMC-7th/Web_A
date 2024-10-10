@@ -10,6 +10,7 @@ const StyledLayout = styled.div`
 
 const ContentLayout = styled.div`
   display: flex;
+  min-height: 100vh;
 `;
 
 const OutletLayout = styled.div`
