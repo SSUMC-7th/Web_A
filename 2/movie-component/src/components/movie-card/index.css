@@ -1,0 +1,15 @@
+.MovieCardStyle {
+  margin: 0.5rem;
+}
+
+.MovieCardStyle img {
+  width: 6rem;
+  height: 9rem;
+  border-radius: 0.3rem;
+  object-fit: cover;
+}
+
+.MovieCardStyle img:hover {
+  filter: brightness(0.5);
+  cursor: pointer;
+}
