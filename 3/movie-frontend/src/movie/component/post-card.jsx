@@ -1,8 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export default function PostCard({ imageUrl, title, date }) {
+export default function PostCard({ imageUrl, title, date, id }) {
+  const navigate = useNavigate();
   return (
-    <Column>
+    <Column
+      onClick={() => {
+        navigate(`/movie/detail/${id}`, { state: id });
+      }}
+    >
       <CardImage src={`https://image.tmdb.org/t/p/original${imageUrl}`} />
       <Title>{title}</Title>
       <Date>{date}</Date>
