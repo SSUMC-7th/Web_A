@@ -30,14 +30,13 @@ export default function CategoryPage() {
   }
 
   const posterDatas = data.results;
-  console.log(posterDatas);
 
   return (
     <MovieList>
       {posterDatas.map((posterData, index) => (
         <PostCard
           key={index}
-          imageUrl={posterData.poster_path}
+          imgUrl={posterData.poster_path}
           title={posterData.title}
           date={posterData.release_date}
           id={posterData.id}

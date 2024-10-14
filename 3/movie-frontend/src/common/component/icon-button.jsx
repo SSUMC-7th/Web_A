@@ -4,7 +4,7 @@ export default function IconButton({ text, icon, onClick }) {
   return (
     <ButtonStyle onClick={onClick}>
       {icon}
-      {text}
+      <p className="max-lg:hidden font-semibold">{text}</p>
     </ButtonStyle>
   );
 }
