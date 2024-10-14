@@ -11,6 +11,9 @@ const GlobalStyles = createGlobalStyle`
     background-color: black;
     font-family: Arial, sans-serif;
   }
+  img{
+    display:block;
+  }
 `;
 
 export default GlobalStyles;
