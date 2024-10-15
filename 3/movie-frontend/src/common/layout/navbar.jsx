@@ -12,7 +12,7 @@ export default function Navbar() {
           navigate(`/`);
         }}
       >
-        YONGCHA
+        RAILGUN
       </Logo>
       <div>
         <Button

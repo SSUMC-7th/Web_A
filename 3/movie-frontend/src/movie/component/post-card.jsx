@@ -1,9 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export default function PostCard({ imageUrl, title, date }) {
+export default function PostCard({ imgUrl, title, date, id }) {
+  const navigate = useNavigate();
   return (
-    <Column>
-      <CardImage src={`https://image.tmdb.org/t/p/original${imageUrl}`} />
+    <Column
+      onClick={() => {
+        navigate(`/movie/detail/${id}`, { state: id });
+      }}
+    >
+      <CardImage src={`https://image.tmdb.org/t/p/original${imgUrl}`} />
       <Title>{title}</Title>
       <Date>{date}</Date>
     </Column>
@@ -34,7 +40,7 @@ const CardImage = styled.img`
 `;
 
 const Title = styled.div`
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   font-weight: 500;
   margin: 0;
   padding: 0;
@@ -45,7 +51,7 @@ const Title = styled.div`
   display: inline-block;
 `;
 const Date = styled.div`
-  font-size: 0.4rem;
+  font-size: 0.5rem;
   margin: 0;
   padding: 0;
 `;

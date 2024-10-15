@@ -4,14 +4,12 @@ import MainPage from "./common/page/main/page";
 import LoginPage from "./onboarding/page/login/page";
 import RegisterPage from "./onboarding/page/register/register";
 import Sidebar from "./common/layout/sidebar";
-import { Column, Row } from "./common/style/flex";
-import CategoryPage from "./movie/page/category/page";
-import NowPlayingPage from "./movie/page/now-playing/page";
-import PopularPage from "./movie/page/popular/page";
-import TopRatedPage from "./movie/page/top-rated/page";
-import UpComingPage from "./movie/page/up-coming/page";
-import { Background } from "./common/style/background";
 import SearchPage from "./movie/page/search/page";
+import { Column, Row } from "./common/component/flex";
+import { Background } from "./common/component/background";
+import MoviePage from "./movie/page/movie/page";
+import CategoryPage from "./movie/page/movie/category/page";
+import DetailPage from "./movie/page/movie/detail/page";
 
 function App() {
   return (
@@ -21,11 +19,9 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/search" element={<SearchPage />} />
-        <Route path="/category" element={<CategoryPage />} />
-        <Route path="/category/now-playing" element={<NowPlayingPage />} />
-        <Route path="/category/popular" element={<PopularPage />} />
-        <Route path="/category/top-rated" element={<TopRatedPage />} />
-        <Route path="/category/up-coming" element={<UpComingPage />} />
+        <Route path="/movie" element={<MoviePage />} />
+        <Route path="/movie/category/:category" element={<CategoryPage />} />
+        <Route path="/movie/detail/:id" element={<DetailPage />} />
       </Route>
     </Routes>
   );
