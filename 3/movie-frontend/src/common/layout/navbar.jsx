@@ -6,7 +6,7 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   return (
-    <Container>
+    <Container className="h-[3.5rem]">
       <Logo
         onClick={() => {
           navigate(`/`);
@@ -38,7 +38,6 @@ export default function Navbar() {
 
 const Container = styled.div`
   width: 100%;
-  height: 10vh;
   background-color: #141517;
   display: flex;
   align-items: center;

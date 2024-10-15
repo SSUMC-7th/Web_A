@@ -10,7 +10,10 @@ export default function DetailPage() {
     key: id,
     keyword_id: id,
   });
-  console.log(data);
+
+  const detailData = data || [];
+
+  console.log(detailData);
 
   if (loading) {
     return <></>;
@@ -23,13 +26,13 @@ export default function DetailPage() {
   return (
     <div>
       <DetailTopSection
-        bgImgUrl={data.backdrop_path}
-        postImgUrl={data.belongs_to_collection.poster_path}
-        title={data.title}
-        overview={data.overview}
-        date={data.release_data}
-        rating={data.vote_average}
-        genres={data.genres}
+        bgImgUrl={detailData.backdrop_path}
+        postImgUrl={detailData.belongs_to_collection?.poster_path}
+        title={detailData.title}
+        overview={detailData.overview}
+        date={detailData.release_data}
+        rating={detailData.vote_average}
+        genres={detailData.genres}
       />
     </div>
   );

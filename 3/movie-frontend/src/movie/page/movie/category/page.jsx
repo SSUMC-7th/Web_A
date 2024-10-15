@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { MovieList } from "../../../component/movie-list";
 import PostCard from "../../../component/post-card";
 import useGetMovieData from "../../../hook/api/get/use-get-movie-data";
@@ -12,6 +12,8 @@ export default function CategoryPage() {
     key: category,
     category: category,
   });
+
+  const navigate = useNavigate();
 
   if (isLoading) {
     return (
@@ -40,6 +42,9 @@ export default function CategoryPage() {
           title={posterData.title}
           date={posterData.release_date}
           id={posterData.id}
+          onClick={() =>
+            navigate(`/movie/detail/${posterData.id}`, { state: posterData.id })
+          }
         />
       ))}
     </MovieList>

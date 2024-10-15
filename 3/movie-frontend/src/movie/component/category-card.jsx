@@ -36,7 +36,7 @@ const CardImage = styled.img`
   }
 `;
 
-const Text = styled.div`
+export const Text = styled.div`
   position: absolute;
   bottom: 0.5rem;
   left: 0.5rem;
