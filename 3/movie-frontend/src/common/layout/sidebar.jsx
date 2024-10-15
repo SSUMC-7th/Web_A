@@ -27,7 +27,6 @@ export default function Sidebar() {
 }
 
 const Container = styled.div`
-  height: 90vh;
   width: 10vw;
   background-color: #141517;
 `;
