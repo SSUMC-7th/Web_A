@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import style from './Popular.module.css'
+import style from './MovieCategories.module.css'
 import { useCustomFetch } from '../../../hooks/useCustomFetch' 
 import { axiosInstance } from '../../../api/axiosInstance'
 
-export const Popular = () => {
+export const TopRated = () => {
   const navigate = useNavigate();
   const {category} = useParams();
   const [movies, isLoading, isError] = useCustomFetch(`/${category}?language=ko&page=1&region=KR`);

@@ -54,6 +54,8 @@
 
 .cast{
   text-align:center;
+  justify-self: center;
+  width: 120px;
 }
 
 .castImg {

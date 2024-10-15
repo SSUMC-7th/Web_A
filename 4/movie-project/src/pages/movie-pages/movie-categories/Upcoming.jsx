@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import style from './Upcoming.module.css'
+import style from './MovieCategories.module.css'
 import { useCustomFetch } from '../../../hooks/useCustomFetch' 
 import { axiosInstance } from '../../../api/axiosInstance'
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import {NowPlaying} from './now-playing/NowPlaying';
-import {Popular} from './popular/Popular';
-import {TopRated} from './top-rated/TopRated';
-import {Upcoming} from './upcoming/Upcoming';
+import {NowPlaying} from './movie-categories/NowPlaying';
+import {Popular} from './movie-categories/Popular';
+import {TopRated} from './movie-categories/TopRated';
+import {Upcoming} from './movie-categories/Upcoming';
 
 export const MoviesCategory = () => {
   const { category } = useParams();
