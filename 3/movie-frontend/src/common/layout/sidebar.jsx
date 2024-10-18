@@ -19,7 +19,7 @@ export default function Sidebar() {
         icon={<FilmSlate size={16} weight="fill" />}
         text="영화"
         onClick={() => {
-          navigate(`/category`);
+          navigate(`/movie`);
         }}
       />
     </Container>
@@ -27,7 +27,6 @@ export default function Sidebar() {
 }
 
 const Container = styled.div`
-  height: 90vh;
   width: 10vw;
   background-color: #141517;
 `;

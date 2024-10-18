@@ -1,4 +1,4 @@
-import { client } from "./../../common/api/client";
+import { client } from "../../../common/api/client";
 
 const accessToken = import.meta.env.VITE_ACCESS_TOKEN;
 
