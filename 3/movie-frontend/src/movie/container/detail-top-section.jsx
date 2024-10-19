@@ -66,7 +66,7 @@ function DetailTopSection({ id }) {
           {detailData.title}
         </h1>
         <div className="font-semibold mb-[2rem]">
-          <span className="text-[0.8rem]">{detailData.date}</span>
+          <span className="text-[0.8rem]">{detailData.release_date}</span>
           <span className="text-[0.8rem] font-light mx-[0.5rem]">|</span>
           {genres &&
             genres.map((genre, index) => (
