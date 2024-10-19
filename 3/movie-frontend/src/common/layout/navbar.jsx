@@ -1,18 +1,18 @@
 import styled from "styled-components";
-import Button from "../component/button";
+import Button from "../component/buttons/button";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const navigate = useNavigate();
 
   return (
-    <Container>
+    <Container className="min-h-[3.5rem]">
       <Logo
         onClick={() => {
           navigate(`/`);
         }}
       >
-        YONGCHA
+        RAILGUN
       </Logo>
       <div>
         <Button
@@ -38,7 +38,6 @@ export default function Navbar() {
 
 const Container = styled.div`
   width: 100%;
-  height: 10vh;
   background-color: #141517;
   display: flex;
   align-items: center;

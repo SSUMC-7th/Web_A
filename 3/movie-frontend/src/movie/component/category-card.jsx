@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export default function CategoryCard({ imgUrl, text, path }) {
+export default function CategoryCard({ imgUrl, text, category, apiCategory }) {
   const navigate = useNavigate();
-
   return (
     <CategoryCardStyle
       onClick={() => {
-        navigate(`/category/${path}`);
+        navigate(`/movie/category/${category}`, {
+          state: { apiCategory },
+        });
       }}
     >
       <CardImage src={imgUrl} />

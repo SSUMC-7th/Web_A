@@ -1,27 +1,43 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { cn } from "../../common/utils/cn";
 
-export default function PostCard({ imageUrl, title, date }) {
+export default function PostCard({
+  className = "",
+  onClick = () => {},
+  imgUrl,
+  title,
+  subTitle,
+  width = "6rem",
+  height = "9rem",
+}) {
+  const navigate = useNavigate();
   return (
-    <Column>
-      <CardImage src={`https://image.tmdb.org/t/p/original${imageUrl}`} />
+    <div
+      className={cn(
+        className,
+        "flex-col m-[0.5rem] items-start justify-start text-white"
+      )}
+      onClick={onClick}
+    >
+      <CardImage
+        src={
+          imgUrl
+            ? `https://image.tmdb.org/t/p/original${imgUrl}`
+            : `https://picsum.photos/id/222/1800/1200`
+        }
+        width={width}
+        height={height}
+      />
       <Title>{title}</Title>
-      <Date>{date}</Date>
-    </Column>
+      <Date>{subTitle}</Date>
+    </div>
   );
 }
 
-const Column = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0.5rem;
-  align-items: start;
-  justify-content: start;
-  color: white;
-`;
-
 const CardImage = styled.img`
-  width: 6rem;
-  height: 9rem;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   border-radius: 0.3rem;
   margin: 0;
   object-fit: cover;
@@ -34,7 +50,7 @@ const CardImage = styled.img`
 `;
 
 const Title = styled.div`
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   font-weight: 500;
   margin: 0;
   padding: 0;
@@ -44,8 +60,13 @@ const Title = styled.div`
   max-width: 6rem;
   display: inline-block;
 `;
+
 const Date = styled.div`
-  font-size: 0.4rem;
+  font-size: 0.5rem;
   margin: 0;
   padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 6rem;
 `;
