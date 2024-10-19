@@ -36,6 +36,7 @@ const RAW_RUNTIME_STATE =
           ["autoprefixer", "virtual:071bff3f6328757d8549d28616a822ae466d9365cc10bd3c42da0ba40104707520fb14a164cfd316aa48677db09a669e04ee45e7c161cffb236801f3fcb116a6#npm:10.4.20"],\
           ["axios", "npm:1.7.7"],\
           ["classnames", "npm:2.5.1"],\
+          ["clsx", "npm:2.1.1"],\
           ["eslint", "virtual:071bff3f6328757d8549d28616a822ae466d9365cc10bd3c42da0ba40104707520fb14a164cfd316aa48677db09a669e04ee45e7c161cffb236801f3fcb116a6#npm:9.12.0"],\
           ["eslint-plugin-react", "virtual:071bff3f6328757d8549d28616a822ae466d9365cc10bd3c42da0ba40104707520fb14a164cfd316aa48677db09a669e04ee45e7c161cffb236801f3fcb116a6#npm:7.37.1"],\
           ["eslint-plugin-react-hooks", "virtual:071bff3f6328757d8549d28616a822ae466d9365cc10bd3c42da0ba40104707520fb14a164cfd316aa48677db09a669e04ee45e7c161cffb236801f3fcb116a6#npm:5.1.0-rc-fb9a90fa48-20240614"],\
@@ -48,6 +49,7 @@ const RAW_RUNTIME_STATE =
           ["react-router-dom", "virtual:071bff3f6328757d8549d28616a822ae466d9365cc10bd3c42da0ba40104707520fb14a164cfd316aa48677db09a669e04ee45e7c161cffb236801f3fcb116a6#npm:6.26.2"],\
           ["shadcn-react", "virtual:071bff3f6328757d8549d28616a822ae466d9365cc10bd3c42da0ba40104707520fb14a164cfd316aa48677db09a669e04ee45e7c161cffb236801f3fcb116a6#npm:0.0.22"],\
           ["styled-components", "virtual:071bff3f6328757d8549d28616a822ae466d9365cc10bd3c42da0ba40104707520fb14a164cfd316aa48677db09a669e04ee45e7c161cffb236801f3fcb116a6#npm:6.1.13"],\
+          ["tailwind-merge", "npm:2.5.4"],\
           ["tailwindcss", "npm:3.4.13"],\
           ["vite", "virtual:071bff3f6328757d8549d28616a822ae466d9365cc10bd3c42da0ba40104707520fb14a164cfd316aa48677db09a669e04ee45e7c161cffb236801f3fcb116a6#npm:5.4.8"]\
         ],\
@@ -6199,6 +6201,7 @@ const RAW_RUNTIME_STATE =
           ["autoprefixer", "virtual:071bff3f6328757d8549d28616a822ae466d9365cc10bd3c42da0ba40104707520fb14a164cfd316aa48677db09a669e04ee45e7c161cffb236801f3fcb116a6#npm:10.4.20"],\
           ["axios", "npm:1.7.7"],\
           ["classnames", "npm:2.5.1"],\
+          ["clsx", "npm:2.1.1"],\
           ["eslint", "virtual:071bff3f6328757d8549d28616a822ae466d9365cc10bd3c42da0ba40104707520fb14a164cfd316aa48677db09a669e04ee45e7c161cffb236801f3fcb116a6#npm:9.12.0"],\
           ["eslint-plugin-react", "virtual:071bff3f6328757d8549d28616a822ae466d9365cc10bd3c42da0ba40104707520fb14a164cfd316aa48677db09a669e04ee45e7c161cffb236801f3fcb116a6#npm:7.37.1"],\
           ["eslint-plugin-react-hooks", "virtual:071bff3f6328757d8549d28616a822ae466d9365cc10bd3c42da0ba40104707520fb14a164cfd316aa48677db09a669e04ee45e7c161cffb236801f3fcb116a6#npm:5.1.0-rc-fb9a90fa48-20240614"],\
@@ -6211,6 +6214,7 @@ const RAW_RUNTIME_STATE =
           ["react-router-dom", "virtual:071bff3f6328757d8549d28616a822ae466d9365cc10bd3c42da0ba40104707520fb14a164cfd316aa48677db09a669e04ee45e7c161cffb236801f3fcb116a6#npm:6.26.2"],\
           ["shadcn-react", "virtual:071bff3f6328757d8549d28616a822ae466d9365cc10bd3c42da0ba40104707520fb14a164cfd316aa48677db09a669e04ee45e7c161cffb236801f3fcb116a6#npm:0.0.22"],\
           ["styled-components", "virtual:071bff3f6328757d8549d28616a822ae466d9365cc10bd3c42da0ba40104707520fb14a164cfd316aa48677db09a669e04ee45e7c161cffb236801f3fcb116a6#npm:6.1.13"],\
+          ["tailwind-merge", "npm:2.5.4"],\
           ["tailwindcss", "npm:3.4.13"],\
           ["vite", "virtual:071bff3f6328757d8549d28616a822ae466d9365cc10bd3c42da0ba40104707520fb14a164cfd316aa48677db09a669e04ee45e7c161cffb236801f3fcb116a6#npm:5.4.8"]\
         ],\

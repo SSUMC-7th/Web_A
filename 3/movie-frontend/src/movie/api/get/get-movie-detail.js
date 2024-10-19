@@ -1,12 +1,6 @@
-import { client } from "../../../common/api/client";
-
-const accessToken = import.meta.env.VITE_ACCESS_TOKEN;
+import { clientAuth } from "../../../common/api/client";
 
 export const getMovieDetail = async (keyword_id) => {
-  const response = await client.get(`${keyword_id}?language=ko-KR&page=1`, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-    },
-  });
+  const response = await clientAuth.get(`${keyword_id}?language=ko-KR&page=1`);
   return response.data;
 };

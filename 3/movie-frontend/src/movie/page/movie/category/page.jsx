@@ -40,7 +40,7 @@ export default function CategoryPage() {
           key={index}
           imgUrl={posterData.poster_path}
           title={posterData.title}
-          date={posterData.release_date}
+          subTitle={posterData.release_date}
           id={posterData.id}
           onClick={() =>
             navigate(`/movie/detail/${posterData.id}`, { state: posterData.id })

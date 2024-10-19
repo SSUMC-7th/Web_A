@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import IconButton from "../component/icon-button";
+import IconButton from "../component/buttons/icon-button";
 import { MagnifyingGlass, FilmSlate } from "@phosphor-icons/react";
 import { useNavigate } from "react-router-dom";
 

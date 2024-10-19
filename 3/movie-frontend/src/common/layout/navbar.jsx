@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import Button from "../component/button";
+import Button from "../component/buttons/button";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const navigate = useNavigate();
 
   return (
-    <Container className="h-[3.5rem]">
+    <Container className="min-h-[3.5rem]">
       <Logo
         onClick={() => {
           navigate(`/`);

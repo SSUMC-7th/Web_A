@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 export default function CategoryCard({ imgUrl, text, category, apiCategory }) {
   const navigate = useNavigate();
-
   return (
     <CategoryCardStyle
       onClick={() => {
@@ -36,7 +35,7 @@ const CardImage = styled.img`
   }
 `;
 
-export const Text = styled.div`
+const Text = styled.div`
   position: absolute;
   bottom: 0.5rem;
   left: 0.5rem;

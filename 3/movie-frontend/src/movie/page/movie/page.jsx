@@ -21,7 +21,7 @@ export default function MoviePage() {
             key={category}
             imgUrl={`/category/${category}.jpg`}
             text={texts[index]}
-            category
+            category={category}
             apiCategory={api_categorys[index]}
           />
         ))}
