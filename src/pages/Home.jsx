@@ -1,5 +1,5 @@
 import React from "react";
-import Movies from "../pages/movies";
+import Movies from "../pages/Movies";
 
 const Home = () => {
   return (

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Cinna from "../image/cinna.png";
 import Han from "../image/han.jpg";
 import Pocha from "../image/pocha.jpg";
@@ -49,6 +49,8 @@ const CategoryCard = styled(Link)`
 `;
 
 const Category = () => {
+  const navigate = useNavigate();
+
   const categories = [
     { id: 1, label: "현재 상영중인", image: Cinna, category: "now_playing" },
     { id: 2, label: "인기있는", image: Han, category: "popular" },
@@ -61,7 +63,12 @@ const Category = () => {
       <StyledTitle>카테고리</StyledTitle>
       <CategoryCardList>
         {categories.map((category) => (
-          <CategoryCard key={category.id} to={`/movies/${category.category}`}>
+          <CategoryCard
+            key={category.id}
+            onClick={() =>
+              navigate(`/categories/${category.category}`, { replace: false })
+            }
+          >
             <img src={category.image} alt={category.label} />
             <div className="label">{category.label}</div>
           </CategoryCard>

@@ -14,6 +14,7 @@ const useCustomFetch = (url) => {
         setData(response.data); // 여기서 data 속성에 접근
       } catch (error) {
         setIsError(true);
+        console.log("Error fetching data:", error);
       } finally {
         setIsLoading(false);
       }

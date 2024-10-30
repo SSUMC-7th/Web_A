@@ -11,7 +11,7 @@ import Search from "../src/pages/Search.jsx";
 import SignIn from "../src/pages/SignIn.jsx";
 import GlobalStyles from "./GlobalStyle.js";
 import Category from "./pages/Category.jsx";
-import MovieDetailPage from "./pages/MovieDetail.jsx";
+import MovieDetail from "./pages/MovieDetail.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,12 +24,12 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "movies/:category",
+        path: "movie/:category",
         element: <Movies />,
       },
       {
         path: "movies/:movieId",
-        element: <MovieDetailPage />,
+        element: <MovieDetail />,
       },
       {
         path: "login",

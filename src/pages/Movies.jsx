@@ -6,13 +6,60 @@ import { axiosInstance } from "../apis/axios-instance";
 import useCustomFetch from "../hooks/useCustomFetch";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
-const StyledCardList = styled.div`
+const Movies = () => {
+  const { category } = useParams();
+  const navigate = useNavigate();
+
+  const movieCategory = category || "popular"; // category가 없으면 기본값으로 "popular"
+  const {
+    data: movieslist,
+    isLoading,
+    isError,
+  } = useCustomFetch(`/movie/${movieCategory}?language=ko-KR`);
+
+  // 상세 페이지로 이동하는 함수
+  const moveToDetailPage = (movieId) => {
+    navigate(`/movies/${movieId}`);
+  };
+
+  if (isLoading) {
+    return (
+      <div>
+        <h1 style={{ color: "white" }}>로딩 중이에요 ~.~</h1>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div>
+        <h1>style={{ color: "white" }}에러에요 ㅠㅠ</h1>
+      </div>
+    );
+  }
+
+  return (
+    <MovieList>
+      {movieslist?.results?.map((movie) => (
+        <MovieCard key={movie.id} onClick={() => moveToDetailPage(movie.id)}>
+          <img src={`${baseURL}${movie.poster_path}`} alt={movie.title} />
+          <div className="title">{movie.title}</div>
+          <div className="releaseDate">{movie.release_date}</div>
+        </MovieCard>
+      ))}
+    </MovieList>
+  );
+};
+
+export default Movies;
+
+const MovieList = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 20px;
 `;
 
-const StyledCard = styled.div`
+const MovieCard = styled.div`
   width: 150px;
   height: auto;
   cursor: pointer;
@@ -35,50 +82,3 @@ const StyledCard = styled.div`
     font-size: 0.7rem;
   }
 `;
-const Movies = () => {
-  const { category } = useParams();
-  const navigate = useNavigate();
-
-  const movieCategory = category || "popular"; // category가 없으면 기본값으로 "popular"
-  const {
-    data: movieslist,
-    isLoading,
-    isError,
-  } = useCustomFetch(`/movie/${movieCategory}?language=ko-KR`);
-
-  // 상세 페이지로 이동하는 함수
-  const moveToDetailPage = (movieId) => {
-    navigate(`/movies/${movieId}`);
-    window.scrollTo(0, 0); // 페이지 상단으로 스크롤 이동
-  };
-
-  if (isLoading) {
-    return (
-      <div>
-        <h1 style={{ color: "white" }}>로딩 중이에요 ~.~</h1>
-      </div>
-    );
-  }
-
-  if (isError) {
-    return (
-      <div>
-        <h1>style={{ color: "white" }}에러에요 ㅠㅠ</h1>
-      </div>
-    );
-  }
-
-  return (
-    <StyledCardList>
-      {movieslist?.results?.map((movie) => (
-        <StyledCard key={movie.id} onClick={() => moveToDetailPage(movie.id)}>
-          <img src={`${baseURL}${movie.poster_path}`} alt={movie.title} />
-          <div className="title">{movie.title}</div>
-          <div className="releaseDate">{movie.release_date}</div>
-        </StyledCard>
-      ))}
-    </StyledCardList>
-  );
-};
-
-export default Movies;
