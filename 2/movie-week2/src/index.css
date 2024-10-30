@@ -1,0 +1,30 @@
+body {
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: auto;
+}
+
+.app-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+  max-width: 1600px;
+}
+
+.movie-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.movie-container:hover img {
+  filter: brightness(0.4);
+}
