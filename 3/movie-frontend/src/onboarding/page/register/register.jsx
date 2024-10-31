@@ -12,11 +12,9 @@ export default function RegisterPage() {
 
   const onSubmit = ({ email, password }) => {
     const body = { email, password };
-    // 실제 API 요청 등의 로직을 추가할 수 있습니다.
     reset();
   };
 
-  // 첫 번째 비밀번호 필드 값 가져오기
   const password = watch("password");
 
   return (
