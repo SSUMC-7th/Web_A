@@ -40,6 +40,7 @@ const LoginPage = () => {
             register={register}
             validation={{
               required: "필수 필드입니다.",
+              maxLength: { value: 20, message: "최대 20자입니다." },
               minLength: { value: 8, message: "최소 8자입니다." },
             }}
             errors={errors}
