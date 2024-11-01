@@ -37,6 +37,7 @@ export default function RegisterPage() {
             errors={errors}
           />
           <TextField
+            className="mt-[1.2rem]"
             type="password"
             id="password"
             placeholder="password"
@@ -49,6 +50,7 @@ export default function RegisterPage() {
             errors={errors}
           />
           <TextField
+            className="mt-[1.2rem]"
             type="password"
             id="confirmPassword"
             placeholder="password, again"

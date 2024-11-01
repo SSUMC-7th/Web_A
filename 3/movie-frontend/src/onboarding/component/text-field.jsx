@@ -15,10 +15,7 @@ export default function TextField({
         type={type}
         id={id}
         placeholder={placeholder}
-        className={cn(
-          className,
-          "w-full px-4 py-2 mt-2 bg-white border rounded-md"
-        )}
+        className={cn(className, "w-full px-4 py-2 bg-white border rounded-md")}
         {...register(id, validation)}
       />
       {errors[id] && (
