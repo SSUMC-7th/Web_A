@@ -53,14 +53,16 @@ const getAccessToken = () => {
 const getUser = async () => {
   try {
     const accessToken = getAccessToken();
-    const response = await axios.get("/user/me", {
+    const response = await axiosLocal.get("/user/me", {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
     });
+    console.log("유저 데이터:", response.data); // 로그로 확인
     return response.data;
   } catch (error) {
     console.error("데이터 가져오기 실패:", error);
+    throw error; // 에러를 throw하여 호출 부분에서 catch로 잡히게 함
   }
 };
 
