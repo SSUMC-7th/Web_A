@@ -6,5 +6,4 @@ export const MovieList = styled.div`
   justify-content: start;
   align-items: start;
   background-color: black;
-  margin: 0.5rem;
 `;
