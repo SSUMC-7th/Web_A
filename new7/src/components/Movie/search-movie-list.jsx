@@ -1,7 +1,7 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import * as S from "../../pages/Search/search.style";
 import { useState } from "react";
-import useCustomFetch from "../../hooks/useCustomFetch";
+import { useCustomFetch } from "../../hooks/useCustomFetch";
 import CardListSkeleton from "../../components/Skeleton/card-list-skeleton";
 
 const SearchMovieList = () => {

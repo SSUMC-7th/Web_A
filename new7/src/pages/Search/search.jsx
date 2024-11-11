@@ -1,7 +1,7 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import * as S from "./search.style";
 import { useState } from "react";
-import useCustomFetch from "../../hooks/useCustomFetch";
+import { useCustomFetch } from "../../hooks/useCustomFetch";
 import SearchMovieList from "../../components/Movie/search-movie-list";
 
 const baseURL = "https://image.tmdb.org/t/p/original";

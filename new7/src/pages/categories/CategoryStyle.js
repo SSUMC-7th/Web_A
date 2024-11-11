@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 const MovieList = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -27,3 +29,5 @@ const MovieCard = styled.div`
     font-size: 0.7rem;
   }
 `;
+
+export { MovieList, MovieCard };

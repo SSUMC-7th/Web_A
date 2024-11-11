@@ -3,7 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import { useParams, useNavigate } from "react-router-dom";
 import { axiosInstance } from "../apis/axios-instance";
-import useCustomFetch from "../hooks/useCustomFetch";
+import { useCustomFetch } from "../hooks/useCustomFetch";
 const baseURL = "https://image.tmdb.org/t/p/original";
 
 const Movies = () => {

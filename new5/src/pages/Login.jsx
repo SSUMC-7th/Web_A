@@ -1,7 +1,7 @@
 import React from "react";
 import useForm from "../hooks/useForm";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
+// import * as yup from "yup";
+// import { yupResolver } from "@hookform/resolvers/yup";
 import styled from "styled-components";
 import { validateLogin } from "../../utils/validate";
 
@@ -83,7 +83,9 @@ const Input = styled.input`
   border: ${(props) => (props.error ? "2px solid red" : "2px solid #ccc")};
 
   &:focus {
-    outline: ${(props) => (props.error ? "1px solid red" : "2px solid #fc98b1")}
+    outline: ${(props) =>
+      props.error ? "1px solid red" : "2px solid #fc98b1"};
+  }
 `;
 
 const Button = styled.button`

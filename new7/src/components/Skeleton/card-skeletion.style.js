@@ -19,18 +19,18 @@ export const Skeleton = keyframes`
 `;
 
 export const Container = styled.div`
-  width: 120px;
+  width: 152px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 20px;
 `;
 
 export const CardMain = styled.div`
-  width: 100%;
-  height: 180px;
+  width: 150px;
+  height: 220px;
   background: rgb(230, 230, 230);
-  border-radius: 10px;
+  border-radius: 5px;
   animation: ${Skeleton} 1.5s infinite ease-in-out;
 `;
 

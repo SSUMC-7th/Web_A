@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { useNavigate, Link } from "react-router-dom";
-import Cinna from "../image/cinna.png";
-import Han from "../image/han.jpg";
-import Pocha from "../image/pocha.jpg";
-import Pompom from "../image/pompom.png";
+import Cinna from "../../image/cinna.png";
+import Han from "../../image/han.jpg";
+import Pocha from "../../image/pocha.jpg";
+import Pompom from "../../image/pompom.png";
 
 const StyledTitle = styled.div`
   font-size: 1.5rem;
@@ -66,7 +66,7 @@ const Category = () => {
           <CategoryCard
             key={category.id}
             onClick={() =>
-              navigate(`/categories/${category.category}`, { replace: false })
+              navigate(`/category/${category.category}`, { replace: false })
             }
           >
             <img src={category.image} alt={category.label} />
