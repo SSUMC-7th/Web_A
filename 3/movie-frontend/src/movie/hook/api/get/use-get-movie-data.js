@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import { getMovieData } from "../../../api/get/get-movie-data";
 
-export default function useGetMovieData({ key, category }) {
+export default function useGetMovieData({ key, category, page }) {
   return useQuery({
     queryKey: [key],
-    queryFn: () => getMovieData(category),
+    queryFn: () => getMovieData(category, page),
   });
 }
