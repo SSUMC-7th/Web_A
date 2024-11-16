@@ -34,6 +34,7 @@ export default function LoginPage() {
             errors={errors}
           />
           <TextField
+            className="mt-[1.2rem]"
             type="password"
             id="password"
             placeholder="password"

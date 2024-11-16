@@ -1,3 +1,5 @@
+import { cn } from "../../common/utils/cn";
+
 export default function TextField({
   type,
   id,
@@ -5,14 +7,15 @@ export default function TextField({
   register,
   validation,
   errors,
+  className,
 }) {
   return (
-    <div className="mb-2">
+    <>
       <input
         type={type}
         id={id}
         placeholder={placeholder}
-        className="w-full px-4 py-2 mt-2 bg-white border rounded-md"
+        className={cn(className, "w-full px-4 py-2 bg-white border rounded-md")}
         {...register(id, validation)}
       />
       {errors[id] && (
@@ -20,6 +23,6 @@ export default function TextField({
           <span className="text-red-500">{errors[id]?.message}</span>
         </div>
       )}
-    </div>
+    </>
   );
 }
