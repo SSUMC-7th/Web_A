@@ -7,7 +7,11 @@ export default function ToDoSection() {
   const { data, isError, isLoading } = useGetTodo({ title: "" });
 
   if (isError) {
-    return;
+    return (
+      <section className="flex justify-center items-center w-full h-[200px]">
+        <Progress value={66} className="w-[60%]" />
+      </section>
+    );
   }
 
   if (isLoading) {

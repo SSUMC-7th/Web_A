@@ -1,10 +1,12 @@
 import { usePostTodo } from "@/common/hook/api/usePostTodo";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/hooks/use-toast";
+import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 
 export function usePostSection() {
   const { mutateAsync: postTodo } = usePostTodo();
+  const queryClient = useQueryClient();
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -32,6 +34,7 @@ export function usePostSection() {
         description: "새로운 할 일이 성공적으로 추가되었습니다!",
         action: <ToastAction altText="Undo">확인</ToastAction>,
       });
+      queryClient.invalidateQueries(["get-todo", ""]);
     } else {
       toast({
         title: "Todo 추가 실패",

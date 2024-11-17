@@ -14,6 +14,7 @@ import { useState } from "react";
 import { formatDate } from "../util/formatDate";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Todo } from "../api/get/getTodo";
+import { useTodoSection } from "../view/board/hook/useTodoSection";
 
 export function ToDoCard({ className = "", todo }: ToDoCardProps) {
   const [isEdit, setEditMode] = useState(false);
@@ -21,6 +22,17 @@ export function ToDoCard({ className = "", todo }: ToDoCardProps) {
   const handleEditMode = (newEdit: boolean) => {
     setEditMode(newEdit);
   };
+
+  const {
+    title,
+    content,
+    checked,
+    handleTitle,
+    handleContent,
+    handleChecked,
+    handleSubmit,
+    handleDelTodo,
+  } = useTodoSection({ todo: todo });
 
   return (
     <Card className={cn(className, "w-[350px] relative")}>
@@ -38,16 +50,16 @@ export function ToDoCard({ className = "", todo }: ToDoCardProps) {
                 <Label htmlFor="name">Title</Label>
                 <Input
                   id="name"
-                  value={todo.title}
-                  onChange={(e) => onTitleChange(e.target.value)}
+                  value={title}
+                  onChange={(e) => handleTitle(e.target.value)}
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="name">Content</Label>
                 <Input
                   id="name"
-                  value={todo.title}
-                  onChange={(e) => onContentChange(e.target.value)}
+                  value={content}
+                  onChange={(e) => handleContent(e.target.value)}
                 />
               </div>
             </div>
@@ -56,11 +68,11 @@ export function ToDoCard({ className = "", todo }: ToDoCardProps) {
             <div className="grid w-full items-center gap-4 font-semibold">
               <div className="flex flex-col space-y-1.5">
                 <Label>Title</Label>
-                <p>{todo.title}</p>
+                <p>{title}</p>
               </div>
               <div className="flex flex-col space-y-1.5">
                 <Label>Content</Label>
-                <p>{todo.content}</p>
+                <p>{content}</p>
               </div>
             </div>
           )}
@@ -71,19 +83,34 @@ export function ToDoCard({ className = "", todo }: ToDoCardProps) {
           <Button variant="outline" onClick={() => handleEditMode(!isEdit)}>
             Cancel
           </Button>
-          <Button onClick={() => handleEdit}>Complete</Button>
+          <Button
+            onClick={() => {
+              handleSubmit();
+              handleEditMode(!isEdit);
+            }}
+          >
+            Complete
+          </Button>
         </CardFooter>
       )}
       {!isEdit && (
         <CardFooter className="flex justify-between">
-          <Button variant="outline">Delete</Button>
+          <Button
+            variant="outline"
+            onClick={() => {
+              handleDelTodo();
+            }}
+          >
+            Delete
+          </Button>
           <Button onClick={() => handleEditMode(!isEdit)}>Edit</Button>
         </CardFooter>
       )}
       <Checkbox
         id="checked"
         className="absolute top-[1rem] right-[1rem]"
-        checked={todo.checked}
+        checked={checked}
+        onCheckedChange={(checkedValue) => handleChecked(Boolean(checkedValue))}
         disabled={!isEdit}
       />
     </Card>
