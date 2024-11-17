@@ -13,10 +13,10 @@ import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { formatDate } from "../util/formatDate";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Todo } from "../api/get/getTodo";
+import { Todo } from "../api/get/get_todo";
 import { useTodoSection } from "../view/board/hook/useTodoSection";
 
-export function ToDoCard({ className = "", todo }: ToDoCardProps) {
+export function ToDoCard({ className = "", todo, onClick }: ToDoCardProps) {
   const [isEdit, setEditMode] = useState(false);
 
   const handleEditMode = (newEdit: boolean) => {
@@ -32,10 +32,13 @@ export function ToDoCard({ className = "", todo }: ToDoCardProps) {
     handleChecked,
     handleSubmit,
     handleDelTodo,
-  } = useTodoSection({ todo: todo });
+  } = useTodoSection({ todo });
 
   return (
-    <Card className={cn(className, "w-[350px] relative")}>
+    <Card
+      className={cn(className, "w-[350px] relative cursor-pointer")}
+      onClick={onClick}
+    >
       <CardHeader>
         <CardTitle>게시일 : {formatDate(todo.createdAt)}</CardTitle>
         <CardDescription>
@@ -79,12 +82,19 @@ export function ToDoCard({ className = "", todo }: ToDoCardProps) {
         </form>
       </CardContent>
       {isEdit && (
-        <CardFooter className="flex justify-between">
-          <Button variant="outline" onClick={() => handleEditMode(!isEdit)}>
+        <CardFooter className="flex justify-between z-10">
+          <Button
+            variant="outline"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleEditMode(!isEdit);
+            }}
+          >
             Cancel
           </Button>
           <Button
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               handleSubmit();
               handleEditMode(!isEdit);
             }}
@@ -94,16 +104,24 @@ export function ToDoCard({ className = "", todo }: ToDoCardProps) {
         </CardFooter>
       )}
       {!isEdit && (
-        <CardFooter className="flex justify-between">
+        <CardFooter className="flex justify-between z-10">
           <Button
             variant="outline"
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               handleDelTodo();
             }}
           >
             Delete
           </Button>
-          <Button onClick={() => handleEditMode(!isEdit)}>Edit</Button>
+          <Button
+            onClick={(e) => {
+              handleEditMode(!isEdit);
+              e.stopPropagation();
+            }}
+          >
+            Edit
+          </Button>
         </CardFooter>
       )}
       <Checkbox
@@ -120,4 +138,5 @@ export function ToDoCard({ className = "", todo }: ToDoCardProps) {
 interface ToDoCardProps {
   className?: string;
   todo: Todo;
+  onClick: VoidFunction;
 }

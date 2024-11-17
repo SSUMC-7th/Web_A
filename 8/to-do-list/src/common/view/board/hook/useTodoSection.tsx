@@ -1,13 +1,13 @@
-import { Todo } from "@/common/api/get/getTodo";
-import { useDelTodo } from "@/common/hook/api/useDelTodo";
-import { usePatchTodo } from "@/common/hook/api/usePatchTodo";
+import { Todo } from "@/common/api/get/get_todo";
+import { useDelTodo } from "@/common/hook/mutation/useDelTodo";
+import { usePatchTodo } from "@/common/hook/mutation/usePatchTodo";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/hooks/use-toast";
 import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 
 export function useTodoSection({ todo }: UseTodoSectionProps) {
-  const { mutateAsync: patchTodo } = usePatchTodo();
+  const { mutateAsync: patchTodo, isError } = usePatchTodo();
   const [title, setTitle] = useState(todo.title);
   const [content, setContent] = useState(todo.content);
   const [checked, setChecked] = useState(todo.checked);
@@ -64,6 +64,7 @@ export function useTodoSection({ todo }: UseTodoSectionProps) {
     handleChecked,
     handleSubmit,
     handleDelTodo,
+    isError,
   };
 }
 

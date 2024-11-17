@@ -1,4 +1,4 @@
-import { usePostTodo } from "@/common/hook/api/usePostTodo";
+import { usePostTodo } from "@/common/hook/mutation/usePostTodo";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/hooks/use-toast";
 import { useQueryClient } from "@tanstack/react-query";
@@ -34,7 +34,7 @@ export function usePostSection() {
         description: "새로운 할 일이 성공적으로 추가되었습니다!",
         action: <ToastAction altText="Undo">확인</ToastAction>,
       });
-      queryClient.invalidateQueries(["get-todo", ""]);
+      queryClient.invalidateQueries({ queryKey: ["get-todo", ""] });
     } else {
       toast({
         title: "Todo 추가 실패",

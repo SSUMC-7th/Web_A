@@ -1,6 +1,6 @@
+import { patchTodo, patchTodoProps } from "../../api/patch/patch_todo";
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { AxiosResponse } from "axios";
-import { patchTodo, patchTodoProps } from "@/common/api/patch/patchTodo";
 
 export function usePatchTodo(): UseMutationResult<
   AxiosResponse,
