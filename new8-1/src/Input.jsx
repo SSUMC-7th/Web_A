@@ -1,15 +1,15 @@
-import React from "react";
+// import React from "react";
 
-function Input({ value, onChange, className, placeholder }) {
-  return (
-    <input
-      type="text"
-      value={value}
-      onChange={onChange}
-      className={className}
-      placeholder={placeholder}
-    />
-  );
-}
+// function Input({ value, onChange, className, placeholder }) {
+//   return (
+//     <input
+//       type="text"
+//       value={value}
+//       onChange={onChange}
+//       className={className}
+//       placeholder={placeholder}
+//     />
+//   );
+// }
 
-export default Input;
+// export default Input;

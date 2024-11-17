@@ -1,101 +1,136 @@
 import { useState } from "react";
 import "./App.css";
-import Button from "./Button";
-import Input from "./Input";
-import { useQuery } from "@tanstack/react-query";
-import { getTodoList } from "./api/todo";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { getTodoList, postTodo, deleteTodo, patchTodo } from "./api/todo";
+import styled from "styled-components";
+import { queryClient } from "./main";
 
 function App() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [search, setSearch] = useState("");
+  const [checked, setChecked] = useState(false);
 
   const { data: todos, isPending } = useQuery({
-    queryFn: () => getTodoList({ title }),
-    queryKey: ["todos", title],
+    queryFn: () => getTodoList({ title: search }),
+    queryKey: ["todos", search],
   });
+
+  const { mutate: postTodoMutation } = useMutation({
+    mutationFn: postTodo,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["todos"],
+      });
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
+  const { mutate: patchTodoMutation } = useMutation({
+    mutationFn: patchTodo,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["todos"],
+      });
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
+  const { mutate: deleteTodoMutation } = useMutation({
+    mutationFn: deleteTodo,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["todos"],
+      });
+    },
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("제목:", title, "내용:", content);
+    postTodoMutation({ title, content });
   };
 
   return (
     <>
-      <div className="todo-app">
-        <form onSubmit={handleSubmit} className="todo-form">
-          <Input
-            name="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="todo-input"
-            placeholder="제목을 입력하세요"
-          />
-          <Input
-            name="content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            className="todo-input"
-            placeholder="내용을 입력하세요"
-          />
-          <Button type="submit">할 일 등록</Button>
-        </form>
-      </div>
+      <h1>투두 검색</h1>
+      <Input value={search} onChange={(e) => setSearch(e.target.value)} />
+      <Form onSubmit={handleSubmit}>
+        <Input
+          name="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="제목을 입력하세요"
+        />
+        <Input
+          name="content"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder="내용을 입력하세요"
+        />
+        <Button onClick={handleSubmit}>할 일 등록</Button>
+      </Form>
       {isPending ? (
         <div>로딩중입니다.</div>
       ) : (
-        todos[0].map((todo) => {
-          return (
-            <div key={todo.id} className="todo-list">
-              <p>{todo.title}</p>
-              <p>{todo.content}</p>
-            </div>
-          );
-        })
+        <Container>
+          {todos[0]?.map((todo) => {
+            return (
+              <TodoContainer key={todo.id}>
+                <input
+                  type="checkbox"
+                  defaultChecked={todo.checked}
+                  onChange={(e) =>
+                    patchTodoMutation({ id: todo.id, checked: !todo.checked })
+                  }
+                />
+                <div>
+                  <p>{todo.title}</p>
+                  <p>{todo.content}</p>
+                </div>
+                <Button onClick={() => deleteTodoMutation({ id: todo.id })}>
+                  삭제하기
+                </Button>
+              </TodoContainer>
+            );
+          })}
+        </Container>
       )}
     </>
-    /* <div className="todo-list">
-        {todos.map((todo) => (
-          <div key={todo.id} className="todo-item">
-            {editingId !== todo.id ? (
-              <div className="todo-text">
-                <p>{todo.id}.</p>
-                <p>{todo.task}</p>
-              </div>
-            ) : (
-              <div className="todo-edit">
-                <p>{todo.id}.</p>
-                <Input
-                  value={editText}
-                  onChange={(e) => setEditText(e.target.value)}
-                  className="edit-input"
-                />
-              </div>
-            )}
-            <div className="button-box">
-              <Button
-                onClick={() => deleteTodo(todo.id)}
-                className="delete-button"
-              >
-                삭제하기
-              </Button>
-              {editingId === todo.id ? (
-                <Button
-                  onClick={() => updateTodo(editingId, editText)}
-                  className="update-button"
-                >
-                  수정 완료
-                </Button>
-              ) : (
-                <Button
-                  onClick={() => setEditingId(todo.id)}
-                  className="edit-button"
-                >
-                  수정 진행
-                </Button>
-              )}
-            </div>
-          </div>
-        ))}
-      </div> */
   );
 }
 
 export default App;
+
+const Form = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+const Input = styled.input`
+  padding: 10px;
+  border: 1px solid purple;
+  border-radius: 20px;
+`;
+
+const Button = styled.button`
+  border-radius: 10px;
+  border: none;
+  padding: 20px;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+const TodoContainer = styled.div`
+  display: flex;
+  gap: 20px;
+`;
