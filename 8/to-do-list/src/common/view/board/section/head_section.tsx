@@ -6,7 +6,7 @@ export default function HeadSection() {
     <section className="flex justify-center">
       <h1
         className="font-semibold text-[2rem] cursor-pointer"
-        onClick={() => navigate(-1)}
+        onClick={() => navigate("/")}
       >
         TO DO LIST
       </h1>

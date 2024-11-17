@@ -37,7 +37,7 @@ export function ToDoCard({ className = "", todo, onClick }: ToDoCardProps) {
   return (
     <Card
       className={cn(className, "w-[350px] relative cursor-pointer")}
-      onClick={onClick}
+      onClick={isEdit ? undefined : onClick}
     >
       <CardHeader>
         <CardTitle>게시일 : {formatDate(todo.createdAt)}</CardTitle>
