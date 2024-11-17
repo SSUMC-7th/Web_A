@@ -13,7 +13,7 @@ export interface todoProps {
   title?: string;
 }
 
-interface Todo {
+export interface Todo {
   createdAt: string;
   updatedAt: string;
   version: number;

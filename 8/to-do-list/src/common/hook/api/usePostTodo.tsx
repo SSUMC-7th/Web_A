@@ -1,11 +1,13 @@
 import { useMutation, UseMutationResult } from "@tanstack/react-query";
 import { AxiosResponse } from "axios";
-import { postTodo, todoProps } from "../../api/post/postTodo";
+import { postTodo, postTodoProps } from "../../api/post/postTodo";
 
 export function usePostTodo(): UseMutationResult<
   AxiosResponse,
   Error,
-  todoProps
+  postTodoProps
 > {
-  return useMutation<AxiosResponse, Error, todoProps>({ mutationFn: postTodo });
+  return useMutation<AxiosResponse, Error, postTodoProps>({
+    mutationFn: postTodo,
+  });
 }

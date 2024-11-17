@@ -1,13 +1,14 @@
 import { client } from "../client";
 
-export const postTodo = async ({
+export const patchTodo = async ({
+  id,
   title,
   content,
   checked = false,
-}: postTodoProps) => {
+}: patchTodoProps) => {
   return await client({
-    url: "/todo",
-    method: "post",
+    url: `/todo/${id}`,
+    method: "patch",
     data: {
       title: title,
       content: content,
@@ -16,7 +17,8 @@ export const postTodo = async ({
   });
 };
 
-export interface postTodoProps {
+export interface patchTodoProps {
+  id: number;
   title: string;
   content: string;
   checked?: boolean;

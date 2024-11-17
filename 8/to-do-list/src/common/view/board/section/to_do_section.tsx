@@ -25,17 +25,9 @@ export default function ToDoSection() {
       <ScrollArea className="w-full whitespace-nowrap rounded-lg border">
         <div className="flex w-max space-x-4 p-4">
           {resp.map((todo, index) => (
-            <ToDoCard
-              key={index}
-              createdAt={todo.createdAt}
-              updateAt={todo.updatedAt}
-              title={todo.title}
-              content={todo.content}
-              checked={todo.checked}
-            />
+            <ToDoCard key={index} todo={todo} />
           ))}
         </div>
-
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
     </section>

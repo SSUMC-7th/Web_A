@@ -13,15 +13,9 @@ import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { formatDate } from "../util/formatDate";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Todo } from "../api/get/getTodo";
 
-export function ToDoCard({
-  createdAt,
-  updateAt,
-  title,
-  content,
-  className = "",
-  checked,
-}: ToDoCardProps) {
+export function ToDoCard({ className = "", todo }: ToDoCardProps) {
   const [isEdit, setEditMode] = useState(false);
 
   const handleEditMode = (newEdit: boolean) => {
@@ -31,8 +25,10 @@ export function ToDoCard({
   return (
     <Card className={cn(className, "w-[350px] relative")}>
       <CardHeader>
-        <CardTitle>게시일 : {formatDate(createdAt)}</CardTitle>
-        <CardDescription>최근 수정일 : {formatDate(updateAt)}</CardDescription>
+        <CardTitle>게시일 : {formatDate(todo.createdAt)}</CardTitle>
+        <CardDescription>
+          최근 수정일 : {formatDate(todo.updatedAt)}
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <form>
@@ -40,11 +36,19 @@ export function ToDoCard({
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="name">Title</Label>
-                <Input id="name" placeholder="Name of your project" />
+                <Input
+                  id="name"
+                  value={todo.title}
+                  onChange={(e) => onTitleChange(e.target.value)}
+                />
               </div>
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="name">Content</Label>
-                <Input id="name" placeholder="Name of your project" />
+                <Input
+                  id="name"
+                  value={todo.title}
+                  onChange={(e) => onContentChange(e.target.value)}
+                />
               </div>
             </div>
           )}
@@ -52,11 +56,11 @@ export function ToDoCard({
             <div className="grid w-full items-center gap-4 font-semibold">
               <div className="flex flex-col space-y-1.5">
                 <Label>Title</Label>
-                <p>{title}</p>
+                <p>{todo.title}</p>
               </div>
               <div className="flex flex-col space-y-1.5">
                 <Label>Content</Label>
-                <p>{content}</p>
+                <p>{todo.content}</p>
               </div>
             </div>
           )}
@@ -67,7 +71,7 @@ export function ToDoCard({
           <Button variant="outline" onClick={() => handleEditMode(!isEdit)}>
             Cancel
           </Button>
-          <Button onClick={() => handleEditMode(!isEdit)}>Complete</Button>
+          <Button onClick={() => handleEdit}>Complete</Button>
         </CardFooter>
       )}
       {!isEdit && (
@@ -79,7 +83,7 @@ export function ToDoCard({
       <Checkbox
         id="checked"
         className="absolute top-[1rem] right-[1rem]"
-        checked={checked}
+        checked={todo.checked}
         disabled={!isEdit}
       />
     </Card>
@@ -88,9 +92,5 @@ export function ToDoCard({
 
 interface ToDoCardProps {
   className?: string;
-  createdAt: string;
-  updateAt: string;
-  title: string;
-  content: string;
-  checked: boolean;
+  todo: Todo;
 }
