@@ -2,39 +2,54 @@ import { useState } from "react";
 import "./App.css";
 import Button from "./Button";
 import Input from "./Input";
+import { useContext } from "react";
+import { TodoContext } from "./context/TodoContext";
 
 function App() {
-  const [todos, setTodos] = useState([
-    { id: 1, task: "투두 만들어보기" },
-    { id: 2, task: "희연 혜원 혜윤 건 찬민" },
-  ]);
+  const {
+    todos,
+    text,
+    setText,
+    editingId,
+    setEditingId,
+    editText,
+    setEditText,
+    handleSubmit,
+    addTodo,
+    deleteTodo,
+    updateTodo,
+  } = useContext(TodoContext);
+  // const [todos, setTodos] = useState([
+  //   { id: 1, task: "투두 만들어보기" },
+  //   { id: 2, task: "희연 혜원 혜윤 건 찬민" },
+  // ]);
 
-  const [text, setText] = useState("");
-  const [editingId, setEditingId] = useState("");
-  const [editText, setEditText] = useState("");
+  // const [text, setText] = useState("");
+  // const [editingId, setEditingId] = useState("");
+  // const [editText, setEditText] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  // };
 
-  const addTodo = () => {
-    setTodos((prev) => [
-      ...prev,
-      { id: Math.floor(Math.random() * 100) + 2, task: text },
-    ]);
-    setText("");
-  };
+  // const addTodo = () => {
+  //   setTodos((prev) => [
+  //     ...prev,
+  //     { id: Math.floor(Math.random() * 100) + 2, task: text },
+  //   ]);
+  //   setText("");
+  // };
 
-  const deleteTodo = (id) => {
-    setTodos((prev) => prev.filter((item) => item.id !== id));
-  };
+  // const deleteTodo = (id) => {
+  //   setTodos((prev) => prev.filter((item) => item.id !== id));
+  // };
 
-  const updateTodo = (id, text) => {
-    setTodos((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, task: text } : item))
-    );
-    setEditingId("");
-  };
+  // const updateTodo = (id, text) => {
+  //   setTodos((prev) =>
+  //     prev.map((item) => (item.id === id ? { ...item, task: text } : item))
+  //   );
+  //   setEditingId("");
+  // };
 
   return (
     <div className="todo-app">
@@ -67,27 +82,29 @@ function App() {
                 />
               </div>
             )}
-            <Button
-              onClick={() => deleteTodo(todo.id)}
-              className="delete-button"
-            >
-              삭제하기
-            </Button>
-            {editingId === todo.id ? (
+            <div className="button-box">
               <Button
-                onClick={() => updateTodo(editingId, editText)}
-                className="update-button"
+                onClick={() => deleteTodo(todo.id)}
+                className="delete-button"
               >
-                수정 완료
+                삭제하기
               </Button>
-            ) : (
-              <Button
-                onClick={() => setEditingId(todo.id)}
-                className="edit-button"
-              >
-                수정 진행
-              </Button>
-            )}
+              {editingId === todo.id ? (
+                <Button
+                  onClick={() => updateTodo(editingId, editText)}
+                  className="update-button"
+                >
+                  수정 완료
+                </Button>
+              ) : (
+                <Button
+                  onClick={() => setEditingId(todo.id)}
+                  className="edit-button"
+                >
+                  수정 진행
+                </Button>
+              )}
+            </div>
           </div>
         ))}
       </div>
