@@ -1,8 +1,7 @@
-import React from "react";
 import { useForm } from "react-hook-form";
 import TextField from "../../component/text-field";
 
-const LoginPage = () => {
+export default function LoginPage() {
   const {
     register,
     handleSubmit,
@@ -16,8 +15,9 @@ const LoginPage = () => {
   };
 
   return (
-    <section className="flex flex-col items-center justify-center h-screen">
-      <div className="w-full max-w-md p-6 rounded-md shadow-md bg-light-color">
+    <section className="flex flex-col items-center justify-center h-full">
+      <h1 className="text-white text-[2rem] font-medium">로그인 페이지</h1>
+      <div className="w-full max-w-md rounded-md shadow-md bg-light-color">
         <form className="mt-6" onSubmit={handleSubmit(onSubmit)}>
           <TextField
             type="email"
@@ -64,6 +64,4 @@ const LoginPage = () => {
       </div>
     </section>
   );
-};
-
-export default LoginPage;
+}
