@@ -116,8 +116,8 @@ export function ToDoCard({ className = "", todo, onClick }: ToDoCardProps) {
           </Button>
           <Button
             onClick={(e) => {
-              handleEditMode(!isEdit);
               e.stopPropagation();
+              handleEditMode(!isEdit);
             }}
           >
             Edit
