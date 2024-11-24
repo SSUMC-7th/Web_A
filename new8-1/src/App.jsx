@@ -1,136 +1,159 @@
-import { useState } from "react";
-import "./App.css";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { getTodoList, postTodo, deleteTodo, patchTodo } from "./api/todo";
+import React, { useState } from "react";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { getTodoList, postTodo, patchTodo, deleteTodo } from "./api/todo";
 import styled from "styled-components";
 import { queryClient } from "./main";
 
 function App() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [search, setSearch] = useState("");
-  const [checked, setChecked] = useState(false);
 
-  const { data: todos, isPending } = useQuery({
-    queryFn: () => getTodoList({ title: search }),
-    queryKey: ["todos", search],
+  // Todo 목록 불러오기
+  const { data: todos, isLoading } = useQuery({
+    queryKey: ["todos"],
+    queryFn: getTodoList,
   });
 
-  const { mutate: postTodoMutation } = useMutation({
-    mutationFn: postTodo,
+  // Todo 생성
+  const { mutate: createTodo } = useMutation(postTodo, {
     onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["todos"],
-      });
-    },
-    onError: (error) => {
-      console.log(error);
+      queryClient.invalidateQueries(["todos"]);
+      setTitle("");
+      setContent("");
     },
   });
 
-  const { mutate: patchTodoMutation } = useMutation({
-    mutationFn: patchTodo,
+  // Todo 수정
+  const { mutate: updateTodo } = useMutation(patchTodo, {
     onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["todos"],
-      });
-    },
-    onError: (error) => {
-      console.log(error);
+      queryClient.invalidateQueries(["todos"]);
     },
   });
 
-  const { mutate: deleteTodoMutation } = useMutation({
-    mutationFn: deleteTodo,
+  // Todo 삭제
+  const { mutate: removeTodo } = useMutation(deleteTodo, {
     onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["todos"],
-      });
+      queryClient.invalidateQueries(["todos"]);
     },
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("제목:", title, "내용:", content);
-    postTodoMutation({ title, content });
+    if (title && content) {
+      createTodo({ title, content });
+    }
   };
 
   return (
-    <>
-      <h1>투두 검색</h1>
-      <Input value={search} onChange={(e) => setSearch(e.target.value)} />
+    <Wrapper>
+      <Header>⚡ UMC ToDoList ⚡</Header>
       <Form onSubmit={handleSubmit}>
         <Input
-          name="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          placeholder="제목을 입력하세요"
+          placeholder="제목을 입력해주세요"
         />
         <Input
-          name="content"
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          placeholder="내용을 입력하세요"
+          placeholder="내용을 입력해주세요"
         />
-        <Button onClick={handleSubmit}>할 일 등록</Button>
+        <Button type="submit">ToDo 생성</Button>
       </Form>
-      {isPending ? (
-        <div>로딩중입니다.</div>
+      {isLoading ? (
+        <div>로딩중입니다...</div>
       ) : (
-        <Container>
-          {todos[0]?.map((todo) => {
-            return (
-              <TodoContainer key={todo.id}>
-                <input
-                  type="checkbox"
-                  defaultChecked={todo.checked}
-                  onChange={(e) =>
-                    patchTodoMutation({ id: todo.id, checked: !todo.checked })
-                  }
-                />
-                <div>
-                  <p>{todo.title}</p>
-                  <p>{todo.content}</p>
-                </div>
-                <Button onClick={() => deleteTodoMutation({ id: todo.id })}>
-                  삭제하기
-                </Button>
-              </TodoContainer>
-            );
-          })}
-        </Container>
+        <TodoList>
+          {todos?.map((todo) => (
+            <TodoItem key={todo.id}>
+              <Checkbox
+                type="checkbox"
+                checked={todo.checked}
+                onChange={() =>
+                  updateTodo({ id: todo.id, checked: !todo.checked })
+                }
+              />
+              <TextWrapper>
+                <Title>{todo.title}</Title>
+                <Content>{todo.content}</Content>
+              </TextWrapper>
+              <Button onClick={() => updateTodo({ id: todo.id })}>수정</Button>
+              <Button onClick={() => removeTodo({ id: todo.id })}>삭제</Button>
+            </TodoItem>
+          ))}
+        </TodoList>
       )}
-    </>
+    </Wrapper>
   );
 }
 
 export default App;
 
-const Form = styled.div`
+const Wrapper = styled.div`
+  max-width: 500px;
+  margin: 50px auto;
+  font-family: Arial, sans-serif;
+`;
+
+const Header = styled.h1`
+  text-align: center;
+  margin-bottom: 20px;
+`;
+
+const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
+  margin-bottom: 20px;
 `;
 
 const Input = styled.input`
   padding: 10px;
-  border: 1px solid purple;
-  border-radius: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 `;
 
 const Button = styled.button`
-  border-radius: 10px;
+  padding: 10px;
   border: none;
-  padding: 20px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0056b3;
+  }
 `;
 
-const Container = styled.div`
+const TodoList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
 `;
 
-const TodoContainer = styled.div`
+const TodoItem = styled.div`
   display: flex;
-  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+`;
+
+const Checkbox = styled.input`
+  margin-right: 10px;
+`;
+
+const TextWrapper = styled.div`
+  flex-grow: 1;
+`;
+
+const Title = styled.p`
+  font-weight: bold;
+  margin: 0;
+`;
+
+const Content = styled.p`
+  margin: 0;
 `;
