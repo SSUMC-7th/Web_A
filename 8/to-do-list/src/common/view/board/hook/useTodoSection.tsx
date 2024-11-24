@@ -3,7 +3,6 @@ import { useDelTodo } from "@/common/hook/mutation/useDelTodo";
 import { usePatchTodo } from "@/common/hook/mutation/usePatchTodo";
 import { ToastAction } from "@/components/ui/toast";
 import { useToast } from "@/hooks/use-toast";
-import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 
 export function useTodoSection({ todo }: UseTodoSectionProps) {
@@ -14,11 +13,9 @@ export function useTodoSection({ todo }: UseTodoSectionProps) {
   const { toast } = useToast();
 
   const { mutateAsync: delTodo } = useDelTodo();
-  const queryClient = useQueryClient();
 
   const handleDelTodo = async () => {
     await delTodo({ id: todo.id });
-    queryClient.invalidateQueries({ queryKey: ["get-todo", ""] });
   };
 
   const handleTitle = (newTitle: string) => {
