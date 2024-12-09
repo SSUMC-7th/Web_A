@@ -17,11 +17,11 @@ export function Header() {
         <NavigationMenuItem>
           <HeaderButton onClick={() => navigate(`/`)}>Rail</HeaderButton>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        <NavigationMenuItem className="relative">
           <NavigationMenuTrigger className="h-[4rem] rounded-none bg-gray-900 text-white hover:bg-gray-700">
             MOVIE
           </NavigationMenuTrigger>
-          <NavigationMenuContent>
+          <NavigationMenuContent className="relative">
             <DropdownMenu />
           </NavigationMenuContent>
         </NavigationMenuItem>
